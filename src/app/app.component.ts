@@ -17,11 +17,6 @@ export class AppComponent {
 
   }
 
-  ngOnInit(){
-    this.httpService.getWeather().subscribe(
-      (resp) => {this.currentWeather = resp}, // response
-      (error) => {console.log(error);}
-      );
-  }
+
 
 }
