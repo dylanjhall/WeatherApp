@@ -7,9 +7,12 @@ export interface Config {
   heroesUrl: string;
   textfile: string;
   date: any;
+  weatherKey:string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ConfigService {
     /**
      *
