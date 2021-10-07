@@ -89,7 +89,6 @@ export class DisplayForecastComponent implements OnInit {
       }
     );
 
-
   }
 
   callWeatherService(){
@@ -97,7 +96,7 @@ export class DisplayForecastComponent implements OnInit {
       (resp) => {
         this.currentWeather = resp;
         console.log(resp);
-      }, // response
+      },
       (error) => {console.log(error);}
       );
   }
