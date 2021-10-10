@@ -5,17 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfigComponent } from './config/config.component';
 import { DisplayForecastComponent } from './display-forecast/display-forecast.component';
+import { NgbModule, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { CitySearchComponent } from './city-search/city-search.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     ConfigComponent,
-      DisplayForecastComponent
+      DisplayForecastComponent,
+    CitySearchComponent
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    CommonModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

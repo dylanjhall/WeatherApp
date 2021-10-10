@@ -5,6 +5,7 @@ import { Config, ConfigService } from '../config/config.service';
 import { HttpService } from '../http.service';
 
 
+
 export interface WeatherInfo {
   location: Location;
   current:Current;
@@ -89,7 +90,6 @@ export class DisplayForecastComponent implements OnInit {
     this.configService.getConfig().subscribe(
       (resp)=> {
          this.weatherKey = resp.weatherKey;
-
       }
     );
 
@@ -104,11 +104,16 @@ export class DisplayForecastComponent implements OnInit {
     this.currentWeather.subscribe(
       (resp) => {
         console.log(resp);
-        this.temperature = resp.current.temp_c;
+        this.populateWeather(resp);
       },
       (error) => {console.log(error);}
       );
   };
+
+  populateWeather(weatherResponse : WeatherInfo){
+    this.city = weatherResponse.location.name;
+    this.temperature = weatherResponse.current.temp_c;
+  }
 
 
 }
