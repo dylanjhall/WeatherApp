@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Config, ConfigService } from '../config/config.service';
 import { HttpService } from '../http.service';
 
 
-declare module WeatherInfo {
+export interface WeatherInfo {
+  location: Location;
+  current:Current;
+}
 
   export interface Location {
       name: string;
@@ -54,7 +58,7 @@ declare module WeatherInfo {
       current: Current;
   }
 
-}
+
 
 
 
@@ -65,16 +69,16 @@ declare module WeatherInfo {
   styleUrls: ['./display-forecast.component.css']
 })
 export class DisplayForecastComponent implements OnInit {
-  currentWeather: any;
-  location!: WeatherInfo.Location;
-  current!: WeatherInfo.Current;
-  condition!: WeatherInfo.Condition;
-  rootObject!: WeatherInfo.RootObject;
+  currentWeather!:  Observable< WeatherInfo>;
+  location!: Location;
+  current!: Current;
+  condition!: Condition;
+
   config: Config | undefined ;
   weatherKey: string = '';
 
   public city: string = '';
-  public temperature: string = '';
+  public temperature: number = 0;
 
 
 
@@ -85,20 +89,26 @@ export class DisplayForecastComponent implements OnInit {
     this.configService.getConfig().subscribe(
       (resp)=> {
          this.weatherKey = resp.weatherKey;
-         this.callWeatherService();
+
       }
     );
 
   }
 
-  callWeatherService(){
-    this.httpService.getWeather(this.weatherKey).subscribe(
+  callWeatherService = () =>{
+   this.currentWeather =  this.httpService.getWeather(this.weatherKey);
+  }
+
+  OnWeatherClick  = () => {
+    this.callWeatherService();
+    this.currentWeather.subscribe(
       (resp) => {
-        this.currentWeather = resp;
         console.log(resp);
+        this.temperature = resp.current.temp_c;
       },
       (error) => {console.log(error);}
       );
-  }
+  };
+
 
 }
