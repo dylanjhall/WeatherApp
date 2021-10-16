@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
-import { CommonModule} from '@angular/common';
 import {Observable, OperatorFunction} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import { NgModule } from '@angular/core';
-import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap'
 
 
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',

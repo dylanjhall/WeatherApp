@@ -7,7 +7,7 @@ import { WeatherInfo, Current, Condition } from '../response-interfaces/response
 
 
 @Component({
-  selector: 'app-display-forecast',
+  selector: 'app-display-current-weather',
   templateUrl: './display-current-weather.component.html',
   styleUrls: ['./display-current-weather.component.css']
 })
