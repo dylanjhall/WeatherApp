@@ -8,10 +8,10 @@ import { WeatherInfo, Current, Condition } from '../response-interfaces/response
 
 @Component({
   selector: 'app-display-forecast',
-  templateUrl: './display-forecast.component.html',
-  styleUrls: ['./display-forecast.component.css']
+  templateUrl: './display-current-weather.component.html',
+  styleUrls: ['./display-current-weather.component.css']
 })
-export class DisplayForecastComponent implements OnInit {
+export class DisplayCurrentWeatherComponent implements OnInit {
   currentWeather!:  Observable< WeatherInfo>;
   location!: Location;
   current!: Current;

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { CommonModule} from '@angular/common';
 import {Observable, OperatorFunction} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import { NgModule } from '@angular/core';
