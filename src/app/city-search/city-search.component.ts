@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {Observable, OperatorFunction} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {from, Observable, of, OperatorFunction} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
+import { HttpService } from '../http.service';
+import { WeatherInfo , Location} from '../response-interfaces/response-interfaces';
 
 
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
@@ -19,13 +21,36 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
 })
 export class CitySearchComponent {
   public model: any;
+  public location!: Location[];
+
+  constructor(private httpService: HttpService) {
+
+  }
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
     text$.pipe(
-      debounceTime(200),
+      debounceTime(300),
       distinctUntilChanged(),
+      tap(r=> this.getCity()),
       map(term => term.length < 2 ? []
-        : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+        : this.handleArryOfLocationData(term) )  // TODO: investigate slice amount   //
     )
+
+    handleArryOfLocationData(term : string):string[]{
+      let cities = [this.location[0].name];
+     return  cities.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10)
+       // return [""];
+    }
+
+    getCity() {
+      // TODO have to change httpservice to take url
+      const weatherInfo$ =   this.httpService.getWeather('c19fda244ae14731aa532946210710') ; // TODo  hide westher key
+       weatherInfo$.subscribe(  w => {
+        console.log(w.location);
+        this.location = [w.location] ;
+       });
+
+
+    }
 
 }
