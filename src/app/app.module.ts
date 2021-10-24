@@ -15,9 +15,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ConfigComponent,
-      DisplayCurrentWeatherComponent,
+    DisplayCurrentWeatherComponent,
     CitySearchComponent
-   ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

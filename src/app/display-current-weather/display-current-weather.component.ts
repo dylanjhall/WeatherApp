@@ -12,7 +12,7 @@ import { WeatherInfo, Current, Condition } from '../response-interfaces/response
   styleUrls: ['./display-current-weather.component.css']
 })
 export class DisplayCurrentWeatherComponent implements OnInit {
-  currentWeather!:  Observable< WeatherInfo>;
+  currentWeather$!:  Observable< WeatherInfo>;
   location!: Location;
   current!: Current;
   condition!: Condition;
@@ -38,12 +38,12 @@ export class DisplayCurrentWeatherComponent implements OnInit {
   }
 
   callWeatherService = () =>{
-   this.currentWeather =  this.httpService.getWeather(this.weatherKey);
+   this.currentWeather$ =  this.httpService.getWeather(this.weatherKey);
   }
 
   OnWeatherClick  = () => {
     this.callWeatherService();
-    this.currentWeather.subscribe(
+    this.currentWeather$.subscribe(
       (resp) => {
         console.log(resp);
         this.populateWeather(resp);
