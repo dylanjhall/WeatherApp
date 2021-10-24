@@ -1,0 +1,6 @@
+{
+    "heroesUrl": "api/heroes",
+    "textfile": "assets/textfile.txt",
+    "date": "2020-01-29",
+    "weatherKey" : "c19fda244ae14731aa532946210710"
+  }
