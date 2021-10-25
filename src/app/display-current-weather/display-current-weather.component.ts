@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Config, ConfigService } from '../config/config.service';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http/http.service';
 import { WeatherInfo, Current, Condition } from '../response-interfaces/response-interfaces';
 
 
@@ -11,6 +11,7 @@ import { WeatherInfo, Current, Condition } from '../response-interfaces/response
   templateUrl: './display-current-weather.component.html',
   styleUrls: ['./display-current-weather.component.css']
 })
+
 export class DisplayCurrentWeatherComponent implements OnInit {
   currentWeather$!:  Observable< WeatherInfo>;
   location!: Location;

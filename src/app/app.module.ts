@@ -9,6 +9,7 @@ import { NgbModule, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { CitySearchComponent } from './city-search/city-search.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
 
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
