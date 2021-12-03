@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {from, Observable, of, OperatorFunction} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
-import { HttpService } from '../http.service';
+import { HttpService } from '../services/http/http.service';
 import { WeatherInfo , Location} from '../response-interfaces/response-interfaces';
 
 
@@ -44,11 +44,11 @@ export class CitySearchComponent {
 
     getCity() {
       // TODO have to change httpservice to take url
-      const weatherInfo$ =   this.httpService.getWeather('c19fda244ae14731aa532946210710') ; // TODo  hide westher key
-       weatherInfo$.subscribe(  w => {
-        console.log(w.location);
-        this.location = [w.location] ;
-       });
+      // const weatherInfo$ =   this.httpService.getWeather('c19fda244ae14731aa532946210710') ; // TODo  hide westher key
+      //  weatherInfo$.subscribe(  w => {
+      //   console.log(w.location);
+      //   this.location = [w.location] ;
+      //  });
 
 
     }
