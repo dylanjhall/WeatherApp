@@ -14,6 +14,9 @@ public getWeather(url: string ) : Observable<any> {
 	return this.http.get<any>(url);
 }
 
+public get(url: string, options: {}){
+
+}
 
 }
 

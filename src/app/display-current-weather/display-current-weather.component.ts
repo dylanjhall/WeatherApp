@@ -26,7 +26,9 @@ export class DisplayCurrentWeatherComponent implements OnInit {
 
 
 
-  constructor(private httpService: HttpService, private  configService:  ConfigService) { }
+  constructor(private httpService: HttpService, private  configService:  ConfigService) {
+
+   }
 
   ngOnInit(){
 
@@ -43,7 +45,6 @@ export class DisplayCurrentWeatherComponent implements OnInit {
   }
 
   OnWeatherClick  = () => {
-    this.callWeatherService();
     this.currentWeather$.subscribe(
       (resp) => {
         console.log(resp);
@@ -51,6 +52,8 @@ export class DisplayCurrentWeatherComponent implements OnInit {
       },
       (error) => {console.log(error);}
       );
+    this.callWeatherService();
+
   };
 
   populateWeather(weatherResponse : WeatherInfo){
