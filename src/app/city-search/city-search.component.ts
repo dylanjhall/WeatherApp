@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {from, Observable, of, OperatorFunction} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 import { HttpService } from '../services/http/http.service';
-import { WeatherInfo , Location} from '../response-interfaces/response-interfaces';
+import { WeatherInfo , CityLocation} from '../response-interfaces/response-interfaces';
 
 
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
@@ -21,7 +21,7 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
 })
 export class CitySearchComponent {
   public model: any;
-  public location!: Location[];
+  public location!: CityLocation[];
 
   constructor(private httpService: HttpService) {
 

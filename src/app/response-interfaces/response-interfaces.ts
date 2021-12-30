@@ -1,9 +1,9 @@
 export interface WeatherInfo {
-  location: Location;
+  location: CityLocation;
   current:Current;
 }
 
-  export interface Location {
+  export interface CityLocation {
       name: string;
       region: string;
       country: string;
@@ -47,6 +47,6 @@ export interface WeatherInfo {
   }
 
   export interface RootObject {
-      location: Location;
+      location: CityLocation;
       current: Current;
   }
