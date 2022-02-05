@@ -1,14 +1,10 @@
 <h1>Forecast</h1>
-<h2>City: {{city}}</h2>
-<p>
-
-</p>
-<div>
-  Temperature: {{temperature}}
-</div>
+<h2>City: {{ city }}</h2>
+<p></p>
+<div>Temperature: {{ temperature }}</div>
 <div>
   <app-city-search></app-city-search>
 </div>
 <div>
-  <button class="btn-primary" id="btnGetForecast"  (click)="OnWeatherClick()" >Get Forecast</button>
+  <button id="btnGetForecast" (click)="OnWeatherClick()">Get Forecast</button>
 </div>
