@@ -19,8 +19,8 @@ public getCurrentConditions(url: string): Observable<WeatherInfo>{
   return this.http.get<WeatherInfo>(url);
 }
 
-public get(url: string, options: {}){
-
+public getLocatiion(url: string, options: {}){
+ // return this.http.get<Location>(url); TODO: fix naming collision
 }
 
 }
