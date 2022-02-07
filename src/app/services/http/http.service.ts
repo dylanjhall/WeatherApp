@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { WeatherInfo } from 'src/app/response-interfaces/response-interfaces';
+import { CityLocation, WeatherInfo } from 'src/app/response-interfaces/response-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ public getCurrentConditions(url: string): Observable<WeatherInfo>{
 }
 
 public getLocatiion(url: string, options: {}){
- // return this.http.get<Location>(url); TODO: fix naming collision
+  return this.http.get<CityLocation>(url);// TODO: fix naming collision
 }
 
 }
