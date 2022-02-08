@@ -10,23 +10,23 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CitySearchModule } from './city-search/city-search.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
-  declarations: [
-    AppComponent,
-    ConfigComponent,
-    DisplayCurrentWeatherComponent,
-  ],
+  declarations: [AppComponent, ConfigComponent, DisplayCurrentWeatherComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    CitySearchModule
-
+    CitySearchModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
