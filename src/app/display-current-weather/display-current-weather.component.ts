@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 
 import { Config, ConfigService } from '../config/config.service';
 import { HttpService } from '../services/http/http.service';
-import { WeatherInfo, Current, Condition } from '../response-interfaces/response-interfaces';
+import { WeatherInfo, Current, Condition, CityLocation } from '../response-interfaces/response-interfaces';
+
 
 
 @Component({
@@ -14,14 +15,17 @@ import { WeatherInfo, Current, Condition } from '../response-interfaces/response
 
 export class DisplayCurrentWeatherComponent implements OnInit {
   currentWeather$!:  Observable< WeatherInfo>;
-  location!: Location;
-  current!: Current;
-  condition!: Condition;
+  public location!: CityLocation;
+  public current!:  Current;
+  public condition!: Condition;
+  // private weatherResponses : WeatherInfo[] = [];
+  // private weatherResponse! : WeatherInfo;
+
 
   config: Config | undefined ;
   weatherKey: string = '';
 
-  public city: string = '';
+  public city: string = 'Windsor';
   public temperature: number = 0;
 
 
@@ -40,25 +44,17 @@ export class DisplayCurrentWeatherComponent implements OnInit {
 
   }
 
-  callWeatherService = () =>{
-   this.currentWeather$ =  this.httpService.getWeather(this.weatherKey);
-  }
-
-  OnWeatherClick  = () => {
-    this.currentWeather$.subscribe(
-      (resp) => {
-        console.log(resp);
-        this.populateWeather(resp);
-      },
-      (error) => {console.log(error);}
-      );
-    this.callWeatherService();
-
-  };
-
-  populateWeather(weatherResponse : WeatherInfo){
-    this.city = weatherResponse.location.name;
-    this.temperature = weatherResponse.current.temp_c;
+  onGetCurrentWeather(){
+    let url = 'http://api.weatherapi.com/v1/current.json?key=c19fda244ae14731aa532946210710&q=Windsor&aqi=no'
+    let resp  = this.httpService.getCurrentConditions(url);
+    resp.subscribe(
+      (res: WeatherInfo) => {
+        this.current = res.current;
+        this.condition = res.current.condition;
+        this.location = res.location;
+        console.log(res.current);
+      }
+    )
   }
 
 
