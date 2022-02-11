@@ -1,17 +1,44 @@
-<h1>Forecast</h1>
-<h2>City: {{ city }}</h2>
+<h1>Current Weather</h1>
+<h2>City: {{ location.name }}</h2>
 <p></p>
-<div>Temperature: {{ temperature }}</div>
+
 <div>
-  <app-city-search></app-city-search>
+  <!-- <app-city-search></app-city-search> -->
 </div>
-<div>
-  <button
-    mat-raised-button
-    color="primary"
-    id="btnGetForecast"
-    (click)="OnWeatherClick()"
-  >
-    Get Forecast <mat-icon>ac_unit</mat-icon>
-  </button>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-sm-6">
+        <button
+          mat-raised-button
+          color="primary"
+          id="btnGetForecast"
+          (click)="onGetCurrentWeather()"
+        >
+          Get Forecast
+        </button>
+      </div>
+      <div class="col-sm-6">
+        <input id="locationInput" name="locationInput" type="text" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Current Weather</h3>
+      <!-- TODO add *ngIf to show imperial Metric -->
+      <p>Current Temperature: {{ current.temp_c }} Celsius</p>
+      <p>Feels Like: {{ current.feelslike_c }}</p>
+      <p>Humidity: {{ current.humidity }} %</p>
+      <p>Wind Direction: {{ current.wind_dir }}</p>
+      <!-- TODO add *ngIf to show imperial Metric -->
+      <p>Wind Speed: {{ current.wind_mph }} miles per hour</p>
+    </div>
+    <div class="col-sm-6">
+      <h3>Current Conditions</h3>
+      <p>{{ condition.text }}</p>
+      <p><img src="{{ condition.icon }}" alt="" srcset="" /></p>
+    </div>
+  </div>
 </div>
