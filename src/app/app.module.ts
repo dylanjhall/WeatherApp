@@ -1,32 +1,30 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CitySearchModule } from './city-search/city-search.module';
 import { ConfigComponent } from './config/config.component';
 import { DisplayCurrentWeatherComponent } from './display-current-weather/display-current-weather.component';
-import { CitySearchComponent } from './city-search/city-search.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CitySearchModule } from './city-search/city-search.module';
-
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ConfigComponent,
-    DisplayCurrentWeatherComponent,
-  ],
+  declarations: [AppComponent, ConfigComponent, DisplayCurrentWeatherComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    CitySearchModule
-
+    CitySearchModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    FlexLayoutModule,
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
