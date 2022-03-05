@@ -7,24 +7,22 @@ export interface Config {
   heroesUrl: string;
   textfile: string;
   date: any;
-  weatherKey:string;
+  weatherKey: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConfigService {
-    /**
-     *
-     */
-    //  inject the HttpClient service as a dependency of an application class, as shown in the following
-    constructor(private http:HttpClient) {
+  /**
+   *
+   */
+  //  inject the HttpClient service as a dependency of an application class, as shown in the following
+  constructor(private http: HttpClient) {}
 
-    }
+  configUrl = 'assets/config.json';
 
-    configUrl = 'assets/config.json';
-
-    getConfig(){
-        return this.http.get<Config>(this.configUrl);
-    }
+  getConfig() {
+    return this.http.get<Config>(this.configUrl);
+  }
 }

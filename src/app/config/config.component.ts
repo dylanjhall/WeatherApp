@@ -5,10 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './config.component.html',
 })
 export class ConfigComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
