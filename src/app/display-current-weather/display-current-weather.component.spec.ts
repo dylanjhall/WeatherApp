@@ -4,7 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 /* tslint:disable:no-unused-variable */
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 // Other imports
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -21,10 +24,9 @@ describe('DisplayForecastComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayCurrentWeatherComponent ],
-      imports: [ HttpClientTestingModule ]
-    })
-    .compileComponents();
+      declarations: [DisplayCurrentWeatherComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
     httpClient = TestBed.get(HttpClient);
     httpTestingController = TestBed.get(HttpTestingController);
   }));
